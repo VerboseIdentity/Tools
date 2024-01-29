@@ -1,0 +1,3 @@
+********************** OSA_STS_and_AUP_Script ***********************
+
+* OSA_STS_and_AUP_Script as per the user requirement gets the Thumbprint of the respective certificate with its expiry.

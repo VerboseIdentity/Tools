@@ -1,0 +1,12 @@
+1. Changes made to the "cert export" script - Removing certificates script will now search for certificate in Trusted Root and Trusted people, if available in any of the two directories it will be removed.
+2. Update Certificate permission script - Add two more permission to OSA and STS certificates : 1).Network Service 2).IUSR
+3. Updated Scipt Update : This script can now perform normal copu and also a force copy depending up on the users requirement.
+4. New script added : "Support one server identification" This script can be used to identify which is the Support one server.
+5. Enhanced the working of OSA,STS and AUP certificates three individual scripts are integrated into one.
+6. Installed software check script advanced with sorting method, it gets the installed components followed by sorting and adding the data to a text file.
+7. New Script added : ACDM service or any other service identification with stop and disabling feature.
+8. Execution command to get OS_Version is changed which results the output quickly than the previous code.
+9. New Script Added for SCP checks.
+10. New Script added to check Default printer on all the remote servers.
+11. Interaction changes made to Import and export certs scripts.
+12. 
