@@ -32,3 +32,4 @@ foreach($Credential in $Credentials){
     $pin = $Cred[1]
     Connection -UserID $User -Password $pin -Instance $Instance
 }
+Powershell -noexit
