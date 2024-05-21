@@ -17,7 +17,7 @@ $Destination = Read-Host "`nMake Certain to mention '$' after specifying the dri
 Foreach ($Server in $Servers)
 {
 
-Write-Host "`nCopying $Source to $Destination"
+Write-Host "`nCopying $Source to $Server\$Destination"
 
 $Destfoldercontents = Get-ChildItem -Name "\\$Server\$Destination" -ErrorAction SilentlyContinue
 
