@@ -2,7 +2,7 @@
 
 $Storage_path = ".\Command_SP"
 try{
-$Sps = Get-Content -Path ".\Command_SP\StoredProcedures.txt.txt" -ErrorAction Stop
+$Sps = Get-Content -Path ".\Command_SP\StoredProcedures.txt" -ErrorAction Stop
 }
 catch{
 Write-Host "Could not get file or file contents. Please update the 'StoredProcedures.txt'" -ForegroundColor Yellow
