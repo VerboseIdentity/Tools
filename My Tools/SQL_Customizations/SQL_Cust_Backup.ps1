@@ -7,7 +7,7 @@ else{Write-Host "SqlServer Module already present.."}
 Write-Host "`nBacking up Stored Procedures.."
 
 $Storage_path = ".\Command_SP"
-$backup_location = ".\Command_SP\Backups\"
+$backup_location = ".\Command_SP\Backups-Restores\"
 try {
     $SPs = Get-Content -Path ".\Command_SP\StoredProcedures.txt" -ErrorAction Stop
 } catch {
@@ -38,7 +38,23 @@ $All_Sps = $Instance_Object.Databases["Works"].StoredProcedures
 foreach($SP in $SPs){
 try{
 $TargetSP = $All_Sps | Where-Object {$_.Name -eq "$SP"}
-$TargetSP.script() | Out-File "$backup_location\$($TargetSP.Name).sql"
+
+$spDefinition = Invoke-Sqlcmd -ServerInstance $instance -Database Works -Query "
+    EXEC sp_helptext 'dbo.$($SP)'"
+
+    $procedureText = $spDefinition.Text -join "`n"
+
+$backupScript = @"
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+$procedureText
+GO
+"@ | Out-File $backup_location\$($TargetSP.Name).sql
+
 Write-Host "$($TargetSP.Name) Successfully backed up." -ForegroundColor Green -ErrorAction Continue
 }
 catch{Write-Host "$($TargetSP.Name) backup failed." -ForegroundColor Red}
