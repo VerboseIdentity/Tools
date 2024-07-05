@@ -14,8 +14,7 @@ Remove-Item -Path "\\$Server\C$\AHSINSTALL\TW\Misc\Cert Permissions_Main.ps1" -E
 
 Copy-Item -Path ".\Cert Permissions_Main.ps1" -Destination "\\$Server\C$\AHSINSTALL\TW\Misc"
 
-Echo "`nPreliminaries set."
-
+Write-Host "`nPreliminaries set, functioning on [$Server]"
 
 }
 else{
@@ -23,15 +22,12 @@ else{
 New-Item -Path "\\$Server\C$\AHSINSTALL\TW" -Name Misc -ItemType Directory
 
 Copy-Item -Path ".\Cert Permissions_Main.ps1" -Destination "\\$Server\C$\AHSINSTALL\TW\Misc"
-
+Write-Host "`nWorking on [$Server]"
 }
 
 Invoke-Command -ComputerName $Server -ScriptBlock {Set-Location $using:location
 
 &.\"Cert Permissions_Main.ps1"}
-
-
-Write-Host "`nPermissions added on $Server" -ForegroundColor Green
 
 }
 echo ""
